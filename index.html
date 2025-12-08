@@ -11,6 +11,7 @@
   <header>
     <h1>Tharakarathna B</h1>
     <p>Frontend Developer | Multilingual Tech Creator</p>
+    <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
     <nav>
       <button onclick="scrollToSection('about')">About</button>
       <button onclick="scrollToSection('skills')">Skills</button>
@@ -99,4 +100,25 @@
     <p>© 2025 Tharakarathna B | All rights reserved</p>
   </footer>
 </body>
-</html>
+</html> 
+<script>
+  const toggleBtn = document.getElementById("darkModeToggle");
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    // Save preference in localStorage
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  // Load saved preference
+  window.addEventListener("load", () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+</script>
